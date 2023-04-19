@@ -16,6 +16,7 @@ function Landing() {
         territorios y expandir su imperio mientras se defiende de los ataques de otros jugadores.
         </p>
           <a href='/main'> Jugar </a>
+          <a href='/about'> Sobre el juego</a>
       </div>
     </div>
   )
