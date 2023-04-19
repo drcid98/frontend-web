@@ -1,4 +1,5 @@
 import './Main.css'
+import Button from '../common/Button'
 
 function Main() {
   return (

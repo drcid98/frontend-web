@@ -1,6 +1,7 @@
 import './About.css'
 import Diego from '../assets/diego.jpeg'
 import Gloria from '../assets/gloria.jpg'
+import Button from '../common/Button'
 
 function About() {
   return (
