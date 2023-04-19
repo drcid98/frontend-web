@@ -1,0 +1,29 @@
+nav {
+    background-color: purple;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    height: 50px;
+  }
+
+  
+  
+ul {
+    list-style: none;
+    display: flex;
+}
+
+li {
+    margin-right: 10px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}

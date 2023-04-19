@@ -5,6 +5,7 @@ import Motherboard from '../assets/motherboard.png'
 import Diego from '../assets/diego.jpeg'
 import Gloria from '../assets/gloria.jpg'
 import Button from '../common/Button'
+import Layout from '../common/Layout';
 
 
 const ImageSlider = ({ images, texts }) => {
@@ -19,25 +20,28 @@ const ImageSlider = ({ images, texts }) => {
   };
 
   return (
-    <div className="slider">
-      <button onClick={handlePrevClick}>Prev</button>
-      <div className="image-container">
-        {images.map((image, index) => (
-          <div key={index} className="image-container__item">
-            <img
-              key={index}
-              className={`slider-image ${
-                index === currentIndex ? "active" : ""
-              }`}
-              src={image}
-              alt={`Image ${index}`}
-            />
-            <div className="text-box">{texts[currentIndex]}</div>
-          </div>
-        ))}
+    <Layout>
+
+      <div className="slider">
+        <button onClick={handlePrevClick}>Prev</button>
+        <div className="image-container">
+          {images.map((image, index) => (
+            <div key={index} className="image-container__item">
+              <img
+                key={index}
+                className={`slider-image ${
+                  index === currentIndex ? "active" : ""
+                }`}
+                src={image}
+                alt={`Image ${index}`}
+              />
+              <div className="text-box">{texts[currentIndex]}</div>
+            </div>
+          ))}
+        </div>
+        <button onClick={handleNextClick}>Next</button>
       </div>
-      <button onClick={handleNextClick}>Next</button>
-    </div>
+    </Layout>
   );
 };
 
