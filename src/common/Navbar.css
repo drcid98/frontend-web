@@ -1,15 +1,14 @@
 nav {
-    background-color: purple;
-    color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+    position: fixed; /*Esto hace que el navbar no esté dentro del body*/
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
+    background-color: lightgrey;
     height: 50px;
+    z-index: 9999;
   }
 
   
@@ -17,13 +16,23 @@ nav {
 ul {
     list-style: none;
     display: flex;
+    margin-left: 0px;
+    padding-left: 20px;
 }
 
 li {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 a {
     color: #fff;
     text-decoration: none;
+    padding:0px;
 }
+
+.mini-logo {
+    margin: 0px;
+    height: 30px;
+    padding: 0;
+}
+

@@ -8,19 +8,19 @@ function About() {
   return (
     <Layout>
       <div className="About">
-        <card>
-          <img src={Diego} className="avatar" alt="avatar diego" />
-          <p>Diego Rodriguez Cid </p>
-        </card>
-        <card>
-          <img src={Gloria} className="avatar" alt="avatar gloria" />
-          <p>Gloria Figueroa Rivera</p>
-        </card>
-        <h1>Risk</h1>
+        <h1>Equipo</h1>
+        <div className="cards">
+          <div className="card">
+            <img src={Diego} className="avatar" alt="avatar diego" />
+            <p>Diego Rodriguez Cid </p>
+          </div>
+          <div className="card">
+            <img src={Gloria} className="avatar" alt="avatar gloria" />
+            <p>Gloria Figueroa Rivera</p>
+          </div>
+        </div>
         <div className="card">
-          <p>
-          SupremaciaBoris
-          </p>
+          <p>SupremaciaBoris</p>
         </div>
       </div>
     </Layout>

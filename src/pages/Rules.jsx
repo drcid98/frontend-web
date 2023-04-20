@@ -21,7 +21,6 @@ const ImageSlider = ({ images, texts }) => {
 
   return (
     <Layout>
-
       <div className="slider">
         <button onClick={handlePrevClick}>Prev</button>
         <div className="image-container">

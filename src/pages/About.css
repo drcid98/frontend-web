@@ -1,36 +1,24 @@
-#root {
-    max-width: 1280px;
-    margin: 80px;
-    padding: 2rem;
-    text-align: center;
-  }
-  
 
 .About .avatar {
     height: 150px;
     padding: 20px;
 }
 
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.About {
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .card {
-  padding: 2em;
+  padding: 10px;
 }
 
-.read-the-docs {
-  color: #888;
+h1 {
+  color: white;
 }

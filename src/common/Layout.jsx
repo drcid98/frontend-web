@@ -6,7 +6,9 @@ function Layout(props) {
   return (
     <div>
       <Navbar />
-    {props.children} 
+        <div className="page-content">
+          {props.children} 
+        </div>
     </div>
   );
 }
