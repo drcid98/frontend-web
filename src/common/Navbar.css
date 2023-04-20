@@ -6,9 +6,11 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: lightgrey;
+    background-color: white;
     height: 50px;
     z-index: 9999;
+    border-radius: 10px;
+    border: 1px solid black;
   }
 
   
