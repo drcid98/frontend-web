@@ -8,6 +8,7 @@ import Motherboard4 from '../assets/motherboard_4.png'
 import Button from '../common/Button'
 import Layout from '../common/Layout';
 import Board from '../game/Board';
+import Phase from '../game/Phase';
 
 
 const ImageSlider = ({ images, texts }) => {
@@ -76,6 +77,7 @@ export default function Rules() {
       <ImageSlider images={images} texts={texts} />
       <h1> Instrucciones </h1>
       <Board />
+      <Phase/>
     </div>
     
     </Layout>

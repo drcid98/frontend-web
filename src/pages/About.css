@@ -29,10 +29,17 @@
 
 
 .About .card {
+  display: flex;
   width: 60%;
   padding: 0px;
 }
 
 .About h1 {
   color: white;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    flex-direction: column;
+  }
 }

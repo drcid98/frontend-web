@@ -1,7 +1,38 @@
 .territory1 {
     grid-area: territory1;
+    transition: outline-color 0.3s ease-in-out;
   }
-  
+
+.territory1:hover {
+    border-color: red;
+    outline: 3px solid red;
+    z-index: 9999;
+  }
+  .territory2:hover {
+    border-color: rgba(0, 255, 0, 1);
+    outline: 3px solid rgba(0, 255, 0, 1);
+    z-index: 9999;
+  }
+  .territory3:hover {
+    border-color: rgba(0, 0, 255, 1);
+    outline: 3px solid rgba(0, 0, 255, 1);
+    z-index: 9999;
+  }
+  .territory4:hover {
+    border-color: rgba(0, 255, 255, 1);
+    outline: 3px solid rgba(0, 255, 255, 1);
+    z-index: 9999;
+  }
+
+  .territory2:hover {
+    border-color: rgba(0, 255, 0, 1);
+  }
+  .territory3:hover {
+    border-color: rgba(0, 0, 255, 1);
+  }
+  .territory4:hover {
+    border-color: rgba(0, 255, 255, 1);
+  }
   .territory2 {
     grid-area: territory2;
   }
@@ -38,21 +69,11 @@
     margin: 0%;
     border-radius: 0px;
   }
-.cell1 .territory {
-  border: 2px solid #FF355E;
+.territory {
+  border: 2px solid black;
 }
-.cell2 .territory {
-  border: 2px solid 	#50BFE6;
-}
-.cell3 .territory {
-  border: 2px solid	#66FF66;
-}
-.cell4 .territory {
-  border: 2px solid #FF9933;
-}
-.cell5 .territory {
-  border: 2px solid #FF00CC;
-}
+
+
 
 
 

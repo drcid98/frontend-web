@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import "./Territory.css"
 
 function Territory(props) {
   let className = "territory";
+  const [active, setActive] = useState(false);
 
   switch (props.index) {
     case 0:
@@ -20,8 +22,13 @@ function Territory(props) {
       break;
   }
 
+  const handleClick = () => {
+    setActive(true);
+  };
+
+
   return (
-    <button className={className} onClick={props.onClick}>
+    <button className={`${className} ${active ? "active" : ""}`} onClick={handleClick}>
       {props.value}
     </button>
   );
