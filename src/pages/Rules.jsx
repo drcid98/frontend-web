@@ -7,6 +7,7 @@ import Motherboard3 from '../assets/motherboard_3.png'
 import Motherboard4 from '../assets/motherboard_4.png'
 import Button from '../common/Button'
 import Layout from '../common/Layout';
+import Board from '../game/Board';
 
 
 const ImageSlider = ({ images, texts }) => {
@@ -21,7 +22,6 @@ const ImageSlider = ({ images, texts }) => {
   };
 
   return (
-    <Layout>
       <div className="slider">
         <button onClick={handlePrevClick}>Prev</button>
         <div className="image-container">
@@ -41,7 +41,6 @@ const ImageSlider = ({ images, texts }) => {
         </div>
         <button onClick={handleNextClick}>Next</button>
       </div>
-    </Layout>
   );
 };
 
@@ -71,10 +70,15 @@ export default function Rules() {
   ]
 
   return (
+    <Layout>
     <div className="Rules">
       <h1>Reglas</h1>
       <ImageSlider images={images} texts={texts} />
+      <h1> Instrucciones </h1>
+      <Board />
     </div>
+    
+    </Layout>
   );
 }
 
