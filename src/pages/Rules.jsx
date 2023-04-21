@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import './Rules.css'
 import DCConquista from '../assets/DCConquista.jpeg'
 import Motherboard from '../assets/motherboard.png'
-import Diego from '../assets/diego.jpeg'
-import Gloria from '../assets/gloria.jpg'
+import Motherboard2 from '../assets/motherboard_2.png'
+import Motherboard3 from '../assets/motherboard_3.png'
+import Motherboard4 from '../assets/motherboard_4.png'
 import Button from '../common/Button'
 import Layout from '../common/Layout';
 
@@ -53,22 +54,25 @@ export default function Rules() {
   const images = [
     DCConquista,
     Motherboard,
-    Diego,
-    Gloria
+    Motherboard2,
+    Motherboard3,
+    Motherboard4
   ];
 
   // Aca hayq ue agregar un texto para cada imagen en orden. El texto
   // deberian ser las instrucciones y cosas por el estilo
 
   const texts = [
-    "texto 1 llala",
-    "texto2 asdfjda",
-    "tecsddjk",
-    "aaaaaaaaaaaaa"
+    "DCConquista es un juego de entre 2 a 4 jugadores.\nEl objetivo del juego es conquistar todos los territorios del mapa.",
+    "Los territorios del mapa son divididos entre los jugadores y cada uno recibe la misma cantidad de tropas en total.",
+    "Cada turno de un jugador consiste en 3 partes: Refuerzo, Ataque y Fortalecimiento.",
+    "Se captura un territorio cuando se derrota a la última tropa en él. Cuando esto sucede se debe mover al menos 3 tropas a este nuevo territorio.",
+    "El juego termina cuando un jugador posee todos los territorios del mapa. Para derrotar a un contrincante, el jugador atacante debe conquistar todos sus territorios en un solo turno."
   ]
 
   return (
     <div className="Rules">
+      <h1>Reglas</h1>
       <ImageSlider images={images} texts={texts} />
     </div>
   );

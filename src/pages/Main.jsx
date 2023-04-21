@@ -1,6 +1,7 @@
 import './Main.css'
 import Button from '../common/Button'
 import Layout from '../common/Layout'
+import DCConquista from '../assets/DCConquista_small.png'
 
 function Main() {
   return (
@@ -8,15 +9,23 @@ function Main() {
 
       <div className="Main">
         <div>
-        <p>SOY EL MAIN</p>
+        <img src={DCConquista} className="logo" alt="game-logo" />
+        <h1>DCConquista</h1>
         </div>
-        <h1>Risk</h1>
         <div className="card">
           <p>
               DCConquista es un juego de estrategia y conquista en el que los jugadores compiten por la 
               dominación de la placa madre. Cada jugador asume el papel de un líder militar que busca conquistar 
               territorios y expandir su imperio mientras se defiende de los ataques de otros jugadores.
           </p>
+          <div className='options'>
+            <div className='buttons'>
+            <Button path='/main' label='Jugar' />
+            <Button path='/main' label='Partida rápida' />
+            <Button path='/rules' label='Instrucciones' />
+            <Button path='/about' label='Acerca de' />
+            </div>
+          </div>
         </div>
       </div>
     </Layout>

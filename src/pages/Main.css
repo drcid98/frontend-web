@@ -5,11 +5,57 @@ body {
               rgba(222,31,31,0.8132387706855793) 100%);
   }
 
-.card {
+.Main .card {
     padding: 2em;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
 }
 
 .read-the-docs {
     color: #888;
 }
+
+.Main .options {
+    margin: 30px;
+    border: 2px solid white;
+    background-color: rgba(255, 129, 129, 0.329);
+    width: 40%;
+    text-align: center;
+    border-radius: 20px;
+    
+}
+
+.options .buttons {
+    margin: 25px;
+}
+
+.options button {
+    margin : 20px;
+    width: 50%;
+    height: 60px;
+    font-size: larger;
+  }
+  
+.Main button:hover {
+    filter: drop-shadow(0 0 1em #646cffaa);
+}
+
+button.react:hover {
+    filter: drop-shadow(0 0 1em #61dafbaa);
+}
+
+@font-face {
+    font-family: 'MiFuente';
+    src: url('../assets/ModernWarfare-OV7KP.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  .Main h1 {
+    font-family: 'Mifuente';
+    margin: 10px;
+  }

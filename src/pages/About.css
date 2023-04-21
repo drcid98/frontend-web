@@ -8,17 +8,31 @@
   text-align: center;
 }
 
-.cards {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.About .container {
+  width: 80%;
+  margin-left:10%;
+  margin-top: 5%;
 }
 
 
-.card {
-  padding: 10px;
+.About .info {
+  display: inline-block;
+  text-align: justify;
+  width: 49%;
+  vertical-align: middle;
+  box-sizing: border-box;
+  border: 3px #000000;
+  border-radius: 10px;
+  padding: 2em;
 }
 
-h1 {
+
+
+.About .card {
+  width: 60%;
+  padding: 0px;
+}
+
+.About h1 {
   color: white;
 }

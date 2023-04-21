@@ -8,20 +8,36 @@ function About() {
   return (
     <Layout>
       <div className="About">
-        <h1>Equipo</h1>
-        <div className="cards">
+        <h1>Equipo SupremacíaBoris</h1>
+
+        <div className='container'>
+
           <div className="card">
-            <img src={Diego} className="avatar" alt="avatar diego" />
-            <p>Diego Rodriguez Cid </p>
+            <div className='info'>
+              <img src={Diego} className="avatar" alt="avatar diego" />
+            </div>
+            <div className='info'>
+              <ul>
+                <li>Diego Rodríguez Cid</li>
+                <li>Estudiante Ing. Civil Computación</li>
+              </ul>
+            </div>
           </div>
+
           <div className="card">
-            <img src={Gloria} className="avatar" alt="avatar gloria" />
-            <p>Gloria Figueroa Rivera</p>
+            <div className='info'>
+              <img src={Gloria} className="avatar" alt="avatar gloria" />
+            </div>
+            <div className='info'>
+              <ul>
+                <li>Gloria Figueroa Rivera</li>
+                <li>Estudiante Ing. Civil Computación</li>
+              </ul>
+            </div>
           </div>
+
         </div>
-        <div className="card">
-          <p>SupremaciaBoris</p>
-        </div>
+          
       </div>
     </Layout>
   )

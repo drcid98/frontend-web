@@ -21,12 +21,12 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
+  font-weight:bolder;
+  color: #646cffda;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #4b3ff5;
 }
 
 body {
@@ -44,14 +44,16 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid;
+  border-color: #525151;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #707070d0;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin: 30px;
 }
 button:hover {
   border-color: #646cff;

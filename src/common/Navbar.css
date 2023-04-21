@@ -6,20 +6,21 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: white;
+    background-color: rgba(226, 226, 226, 0.781);
     height: 50px;
     z-index: 9999;
-    border-radius: 10px;
+    border-radius: 0px;
     border: 1px solid black;
   }
 
   
   
-ul {
+nav ul {
     list-style: none;
     display: flex;
     margin-left: 0px;
     padding-left: 20px;
+    margin-bottom: 5px;
 }
 
 li {
@@ -29,7 +30,7 @@ li {
 a {
     color: #fff;
     text-decoration: none;
-    padding:0px;
+    padding:5px;
 }
 
 .mini-logo {

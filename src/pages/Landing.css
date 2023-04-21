@@ -30,24 +30,42 @@
 
 
 .Landing .imagen {
-  height: 220px;
+  width: 90%;
+  height: auto;
   padding: 0;
+  margin-left: 35px;
 }
 
 
-.card {
+.Landing .container {
+  width: 90%;
+  margin: 5%;
+  padding: 0;
+  border: 2px solid white;
+  background-color: rgba(255, 129, 129, 0.329);
+}
+
+.Landing .card {
+  display: inline-block;
+  text-align: justify;
+  width: 50%;
+  vertical-align: middle;
+  box-sizing: border-box;
+  border: 3px #000000;
+  border-radius: 10px;
   padding: 2em;
 }
+
 
 .read-the-docs {
   color: #888;
 }
 
-button {
+.Landing button {
   margin : 30px;
 }
 
-button:hover {
+.Landing button:hover {
   filter: drop-shadow(0 0 1em #646cffaa);
 }
 
