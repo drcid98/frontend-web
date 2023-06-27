@@ -1,7 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../auth/AuthContext';
+import Layout from '../common/Layout';
 import axios from 'axios';
 import './Login.css';
+import DCConquista from '../assets/DCConquista_small.png'
 
 
 function Login() {
@@ -35,13 +37,24 @@ function Login() {
 
 
   return (
+    <Layout>
+    <div className="Login-div">
+      <h1 className="login-title">Login</h1>
+      <div className="logo-container">
+        <img src={DCConquista} className="logo" alt="game-logo" />
+      </div>
+    </div>
+
     <div className="Login">
       {msg.length > 0 && <div className="successMsg"> {msg} </div>}
 
       {error && <div className="error">Hubo un error con el Login, por favor trata nuevamente.</div>}
       <form onSubmit={handleSubmit}>
         <label>
-          Email:
+          <div className="login-label">
+            Email:
+          </div>
+            
           <input 
             type="email" 
             name="email"
@@ -51,7 +64,9 @@ function Login() {
           />
         </label>
         <label>
-          Password:
+          <div className="login-label">
+            Password:
+          </div>
           <input 
             type="password" 
             name="password"
@@ -63,6 +78,8 @@ function Login() {
         <input type="submit" value="Enviar" />
       </form>
     </div>
+
+    </Layout>
   );
 }
 
