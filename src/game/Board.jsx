@@ -9,11 +9,14 @@ function Board() {
   return (
     <div className="board">
         <div className="board-container">
-            <Cell index={0} value={Cells[0]} />
-            <Cell index={1} value={Cells[1]} />
-            <Cell index={2} value={Cells[2]} />
-            <Cell index={3} value={Cells[3]} />
-            <Cell index={4} value={Cells[4]} />
+            <Cell index={{name: 0}} />
+            <Cell index={{name: 1, type:0}} />
+            <Cell index={{name: 2}} />
+            <Cell index={{name: 3, type:1}} />
+            <Cell index={{name: 4, type:1}} />
+            <Cell index={{name: 5, type:2}} />
+            <Cell index={{name: 6, type:2}} />
+            <Cell index={{name: 7, type:2}} />
         </div>
     </div>
   );

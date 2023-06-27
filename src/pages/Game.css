@@ -1,3 +1,9 @@
+
+.page-contanier h1 {
+  font-family: "Lobster", cursive;
+  font-size: 60px;
+}
+
 .game-container {
     aspect-ratio: 10 / 3;
     height: 100%;
