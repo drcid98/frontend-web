@@ -3,6 +3,7 @@ import Landing from "../pages/Landing";
 import Main from "../pages/Main";
 import About from "../pages/About";
 import Rules from "../pages/Rules";
+import Game from "../pages/Game";
 
 function Routing(){
     return (
@@ -13,6 +14,7 @@ function Routing(){
                 <Route path={'/main'} element={<Main/>}/>
                 <Route path={'/about'} element={<About/>}/>
                 <Route path={'/rules'} element={<Rules/>}/>
+                <Route path={'/game'} element={<Game/>}/>
             </Routes>
         </BrowserRouter>
         </>
