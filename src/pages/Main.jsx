@@ -24,6 +24,9 @@ function Main() {
             <Button path='/main' label='Partida rápida' />
             <Button path='/rules' label='Instrucciones' />
             <Button path='/about' label='Acerca de' />
+            <Button path='/login' label='Login' />
+            <Button path='/signup' label='Signup' />
+            <Button path='/userCheck' label='UserCheck' />
             </div>
           </div>
         </div>
