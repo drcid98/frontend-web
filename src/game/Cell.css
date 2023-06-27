@@ -1,85 +1,81 @@
-.territory1 {
-    grid-area: territory1;
-    transition: outline-color 0.3s ease-in-out;
-  }
 
 .territory1:hover {
-    border-color: red;
-    outline: 3px solid red;
-    z-index: 9999;
-  }
-  .territory2:hover {
-    border-color: rgba(0, 255, 0, 1);
-    outline: 3px solid rgba(0, 255, 0, 1);
-    z-index: 9999;
-  }
-  .territory3:hover {
-    border-color: rgba(0, 0, 255, 1);
-    outline: 3px solid rgba(0, 0, 255, 1);
-    z-index: 9999;
-  }
-  .territory4:hover {
-    border-color: rgba(0, 255, 255, 1);
-    outline: 3px solid rgba(0, 255, 255, 1);
-    z-index: 9999;
-  }
+  border-color: rgba(255, 0, 0, 1);
+  background-color: rgba(255, 0, 0, 0.3);
+  z-index: 9999;
+}
+.territory2:hover {
+  border-color: rgba(0, 255, 0, 1);
+  background-color: rgba(0, 255, 0, 0.3);
+  z-index: 9999;
+}
+.territory3:hover {
+  border-color: rgba(0, 0, 255, 1);
+  background-color: rgba(0, 0, 255, 0.3);
+  z-index: 9999;
+}
+.territory4:hover {
+  border-color: rgba(0, 255, 255, 1);
+  background-color: rgba(0, 255, 255, 0.3);
+  z-index: 9999;
+}
 
-  .territory2:hover {
-    border-color: rgba(0, 255, 0, 1);
-  }
-  .territory3:hover {
-    border-color: rgba(0, 0, 255, 1);
-  }
-  .territory4:hover {
-    border-color: rgba(0, 255, 255, 1);
-  }
-  .territory2 {
-    grid-area: territory2;
-  }
-  
-  .territory3 {
-    grid-area: territory3;
-  }
-  
-  .territory4 {
-    grid-area: territory4;
-  }
-  
-  .cell-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    grid-template-rows: repeat(3, 1fr);
-    gap:0px; 
-    height: 90%;
-    margin: 2%;
-    width: 95%;
-    align-items: center;
-    grid-template-areas:
-      "territory1 territory2 territory2 territory3"
-      "territory1 territory4 territory4 territory3"
-      "territory1 territory4 territory4 territory3"; 
-  }
-  
+/* .territory2:hover {
+  border-color: rgba(0, 255, 0, 1);
+}
+.territory3:hover {
+  border-color: rgba(0, 0, 255, 1);
+}
+.territory4:hover {
+  border-color: rgba(0, 255, 255, 1);
+} */
 
-  .territory {
-    display: flex;
-    background-color: lightgoldenrodyellow;
-    height: 100%;
-    width: 100%;
-    margin: 0%;
-    border-radius: 0px;
-  }
-.territory {
-  border: 2px solid black;
+.territory1 {
+  grid-area: territory1;
+  /* transition: outline-color 0.3s ease-in-out; */
+}
+.territory2 {
+  grid-area: territory2;
+}
+
+.territory3 {
+  grid-area: territory3;
+}
+
+.territory4 {
+  grid-area: territory4;
+}
+
+.cell-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-template-rows: repeat(3, 1fr);
+  gap:4px; 
+  height: 90%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 2%;
+  margin-right: 1%;
+  width: 95%;
+  align-items: center;
+  grid-template-areas:
+    "territory1 territory2 territory2 territory3"
+    "territory1 territory4 territory4 territory3"
+    "territory1 territory4 territory4 territory3"; 
 }
 
 
-
-
-
-  .board {
-    border: 1px solid black;
-    background-color: rgb(17, 93, 51);
-    height: 400px;
-    border-radius: 20px;
-  }
+.territory {
+  display: flex;
+  background-color: lightgoldenrodyellow;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-radius: 6px;
+}
+.territory {
+border: 2px solid black;
+}

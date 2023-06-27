@@ -6,6 +6,7 @@ import Rules from "../pages/Rules";
 import Login from "../profile/Login";
 import SignUp from "../profile/Signup";
 import UserCheck from "../protected/UserCheck";
+import Game from "../pages/Game";
 
 function Routing(){
     return (
@@ -19,6 +20,7 @@ function Routing(){
                 <Route path={'/login'} element={<Login/>}/>
                 <Route path={'/signup'} element={<SignUp/>}/>
                 <Route path={'/userCheck'} element={<UserCheck/>}/>
+                <Route path={'/game'} element={<Game/>}/>
             </Routes>
         </BrowserRouter>
         </>

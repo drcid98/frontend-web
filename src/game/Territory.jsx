@@ -23,7 +23,12 @@ function Territory(props) {
   }
 
   const handleClick = () => {
+    if (!active) {
     setActive(true);
+    }
+    else {
+      setActive(false);
+    }
   };
 
 
