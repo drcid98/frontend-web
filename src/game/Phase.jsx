@@ -17,7 +17,8 @@ const Phase = () => {
 				<div className="bar">
 					<div className={`bar-item ${activeIndex === 0 ? "active" : ""}`} />
 					<div className={`bar-item ${activeIndex === 1 ? "active" : ""}`} />
-					<div className={`bar-item ${activeIndex === 2 ? "active" : ""}`} />  
+					<div className={`bar-item ${activeIndex === 2 ? "active" : ""}`} /> 
+					<div className={`bar-item ${activeIndex === 3 ? "active" : ""}`} />  
 				</div>
 				<button onClick={handleNext}>{"\u2192"}</button>
 			</div>

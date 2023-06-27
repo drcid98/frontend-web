@@ -20,16 +20,6 @@
   z-index: 9999;
 }
 
-/* .territory2:hover {
-  border-color: rgba(0, 255, 0, 1);
-}
-.territory3:hover {
-  border-color: rgba(0, 0, 255, 1);
-}
-.territory4:hover {
-  border-color: rgba(0, 255, 255, 1);
-} */
-
 .territory1 {
   grid-area: territory1;
   /* transition: outline-color 0.3s ease-in-out; */
@@ -64,6 +54,61 @@
     "territory1 territory4 territory4 territory3"; 
 }
 
+.cell-container0 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-template-rows: repeat(2, 1fr);
+  gap:4px; 
+  height: 90%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 2%;
+  margin-right: 1%;
+  width: 95%;
+  align-items: center;
+  grid-template-areas:
+  "territory1 territory2 territory3 territory4"
+  "territory1 territory2 territory3 territory4";
+}
+
+
+.cell-container1 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-template-rows: repeat(3, 1fr);
+  gap:4px; 
+  height: 90%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 2%;
+  margin-right: 1%;
+  width: 95%;
+  align-items: center;
+  grid-template-areas:
+    "territory1 territory2 territory2 territory3"
+    "territory1 territory2 territory2 territory3"
+    "territory4 territory4 territory4 territory4"; 
+}
+
+.cell-container2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-template-rows: repeat(2, 1fr);
+  gap:4px; 
+  height: 90%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 2%;
+  margin-right: 1%;
+  width: 95%;
+  align-items: center;
+  grid-template-areas:
+    "territory1 territory2"
+    "territory1 territory2";  
+}
+
+
+
 
 .territory {
   display: flex;
@@ -78,4 +123,9 @@
 }
 .territory {
 border: 2px solid black;
+}
+
+.cell-space {
+  background-color: rgb(7, 224, 18);
+
 }
