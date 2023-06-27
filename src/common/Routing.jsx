@@ -18,7 +18,7 @@ function Routing(){
                 <Route path={'/rules'} element={<Rules/>}/>
                 <Route path={'/login'} element={<Login/>}/>
                 <Route path={'/signup'} element={<SignUp/>}/>
-                <Route path={'/login'} element={<UserCheck/>}/>
+                <Route path={'/userCheck'} element={<UserCheck/>}/>
             </Routes>
         </BrowserRouter>
         </>
