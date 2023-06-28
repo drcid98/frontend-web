@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./Territory.css"
+import { useTerritoryData } from "./provider";
+
 
 function Territory(props) {
   let className = "territory";
@@ -7,32 +9,53 @@ function Territory(props) {
   const [active, setActive] = useState(false);
   let value = "white";
 
+  // Del territorio 0
+  const territoryData = useTerritoryData(0)
+  .then((data) => {
+    if (data) {
+      const playerId = data.player_id;
+      console.log(data.player_id);
+    }
+    // console.log(data['player_id']);
+  });
+  
+  // while (typeof(territoryData) == 'object') {
+  //   console.log("esperanzdo");
+  // }
+
+  // console.log(territoryData + "tipo: " + typeof(territoryData));
+  
+  const playerId = territoryData['player_id'];
+  const troops = territoryData.troops;
+
+  console.log(playerId + " aaaaa");
+
+  // value = territoryData.color;
+  // Aca debo pasarle el nombre del jugador que tiene el territorio
+  // Luego completar con un if para setear el color dependiendo del jugador
+
+
 
   switch (props.index) {
     case 0:
       className += " territory1";
       id = 0;
-      value="red";
       break;
     case 1:
       className += " territory2";
       id = 2;
-      value="green";
       break;
     case 2:
       className += " territory3";
       id = 3;
-      value="blue";
       break;
     case 3:
       className += " territory4";
       id = 4;
-      value="cyan";
       break;
     default:
       className += " territoryDefault";
       id = 999;
-      value="white";
       break;
   }
 
