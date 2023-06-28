@@ -4,9 +4,11 @@ import Main from "../pages/Main";
 import About from "../pages/About";
 import Rules from "../pages/Rules";
 import Login from "../profile/Login";
+import Logout from "../profile/Logout";
 import SignUp from "../profile/Signup";
 import UserCheck from "../protected/UserCheck";
 import Game from "../pages/Game";
+import Waiting from "../pages/Waiting";
 
 function Routing(){
     return (
@@ -21,6 +23,8 @@ function Routing(){
                 <Route path={'/signup'} element={<SignUp/>}/>
                 <Route path={'/userCheck'} element={<UserCheck/>}/>
                 <Route path={'/game'} element={<Game/>}/>
+                <Route path={'/waiting'} element={<Waiting/>}/>
+                <Route path={'/logout'} element={<Logout/>}/>
             </Routes>
         </BrowserRouter>
         </>

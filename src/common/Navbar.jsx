@@ -12,6 +12,7 @@ function Navbar() {
         <li><a href="/login"><span>&#128100;</span> Login</a></li>
         <li><a href="/signup"><span>&#128187;</span> Signup</a></li>
         <li><a href="/about"><span>&#9432;</span> Acerca de</a></li>
+        <li><a href="/logout"><span>&#129302;</span> Logout</a></li>
       </ul>
       
     </nav>
