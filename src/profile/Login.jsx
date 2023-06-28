@@ -38,45 +38,47 @@ function Login() {
 
   return (
     <Layout>
-    <div className="Login-div">
-      <h1 className="login-title">Login</h1>
-      <div className="logo-container">
-        <img src={DCConquista} className="logo" alt="game-logo" />
+    <div className='grid-container'>
+      <div className="Login-div">
+        <h1 className="login-title">Login</h1>
+        <div className="logo-container">
+          <img src={DCConquista} className="logo" alt="game-logo" />
+        </div>
       </div>
-    </div>
 
-    <div className="Login">
-      {msg.length > 0 && <div className="successMsg"> {msg} </div>}
+      <div className="Login">
+        {msg.length > 0 && <div className="successMsg"> {msg} </div>}
 
-      {error && <div className="error">Hubo un error con el Login, por favor trata nuevamente.</div>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          <div className="login-label">
-            Email:
-          </div>
-            
-          <input 
-            type="email" 
-            name="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <div className="login-label">
-            Password:
-          </div>
-          <input 
-            type="password" 
-            name="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <input type="submit" value="Enviar" />
-      </form>
+        {error && <div className="error">Hubo un error con el Login, por favor trata nuevamente.</div>}
+        <form onSubmit={handleSubmit}>
+          <label>
+            <div className="login-label">
+              Email:
+            </div>
+              
+            <input 
+              type="email" 
+              name="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            <div className="login-label">
+              Password:
+            </div>
+            <input 
+              type="password" 
+              name="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          <input type="submit" value="Enviar" />
+        </form>
+      </div>
     </div>
 
     </Layout>
