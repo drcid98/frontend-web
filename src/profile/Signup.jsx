@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Layout from '../common/Layout';
 import './Login.css'; 
 
 function Signup() {
@@ -28,6 +29,7 @@ function Signup() {
     }
 
   return (
+  <Layout>
     <div className="Login">
       {msg.length > 0 && <div className="successMsg"> {msg} </div>}
 
@@ -67,6 +69,7 @@ function Signup() {
         <input type="submit" value="Submit" />
       </form>
     </div>
+  </Layout>
   );
 }
 
