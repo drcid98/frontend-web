@@ -11,6 +11,7 @@
   background-color: rgba(226, 226, 226, 0.781);
   border-radius: 0px;
   border: 1px solid black;
+  z-index: 9999;
 }  
   
 .navbar ul {
