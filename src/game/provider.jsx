@@ -1,32 +1,39 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import axios from 'axios';
 
-const GameContext = createContext(null);
+export const GameContext = createContext(null);
 
 
 export function GameProvider(props) {
   const [state, setState] = useState(null);
   const [gameId, setGameId] = useState(props.gameId);
 
-  //console.log(gameId);
-	// console.log("aaa" + `${import.meta.env.VITE_BACKEND_URL}/start/${gameId}`);
-
-	const fetchGameData = async () => { 
-		axios.get(`${import.meta.env.VITE_BACKEND_URL}/start/${gameId}`)
-		.then(response => {
-			// console.log(response.data);
-			// const jsonData = JSON.parse(response.data);
-			// setState(jsonData);
-			setState(response.data);
-		})
-		.catch(error => {
-			setState(error.message);
+	const fetchGameData = async () => {
+		return new Promise((resolve, reject) => {
+			const interval = setInterval(() => {
+				if (state != null) {
+					clearInterval(interval);
+					resolve(state);
+				}
+			}, 100); // Adjust the interval as per your needs
+	
+			axios.get(`${import.meta.env.VITE_BACKEND_URL}/start/${gameId}`)
+			.then(response => {
+					setState(response.data);
+			})
+			.catch(error => {
+					setState(error.message);
+					reject(error);
+			});
 		});
+	};
+	
 
-	}
+
+	
 	useEffect(() => {
 		fetchGameData();
-	}, []);
+	}, [gameId]);
 	// Esto de aca genera que se ejecute a cada rato
     
   return (
@@ -36,24 +43,3 @@ export function GameProvider(props) {
   )
 }
 
-
-export async function useTerritoryData(id) {
-  // Todo:
-  // const value = useContext(GameContext);
-
-	const value = await new Promise((resolve) => {
-    const context = useContext(GameContext);
-    resolve(context);
-  });
-
-  if (!value.state) {
-		// console.log(value.state + "aaaa");
-    return null;
-  }
-
-  // console.log(value.state);
-	const territories = value.state.territories;
-	const territoryData = territories[id];
-	// console.log(territoryData.player_id);
-  return {'player_id': territoryData.player_id, 'troops': territoryData.troops};
-}

@@ -8,6 +8,7 @@ import { GameProvider } from '../game/provider';
 
 function Game() {
     return (
+      // Aca hay que inicializar el id con el id del juego actual
       <GameProvider gameId={1}>
 
         <Layout>
