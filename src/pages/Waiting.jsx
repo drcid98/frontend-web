@@ -19,6 +19,7 @@ const WaitingRoom = () => {
   const [print, setPrint] = useState();
   const [color, setColor] = useState();
   const [showButton, setShowButton] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleClick = () => {
     if (!available){
@@ -48,12 +49,8 @@ const WaitingRoom = () => {
   const handleStart = () => {
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/start/${available}`)
       .then(response => {
-        if (response.data.game.num_players < 4){
-          setFirst(true);
-        }
-        else {
-          setPrint(`La partida está llena :( `);
-        }
+        setFirst(true);
+        
         
         // setPlayers(`Hay ${response.data.game.num_players} jugadores acualmente, vuelva a intentarlo más tarde`);
         console.log(response.data);
@@ -62,10 +59,6 @@ const WaitingRoom = () => {
           console.log("players")
           setPlayers(response.data.game.num_players);
         }
-    
-        // if (partida === 4) {
-        //   // Do something
-        // }
       })
       .catch(error => {
         console.error(error);
@@ -77,6 +70,23 @@ const WaitingRoom = () => {
       .then(response => {
         setPlayers(response.data.num_players);
         setColor(response.data.num_players);
+    
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+    const existingUser = () => {
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/games/${available}/${userID}`)
+      .then(response => {
+        console.log(response.data);
+        if (response.data.value){
+              setPlayers(response.data.num_players);
+        }
+        else {
+          setPrint(`La partida está llena :( `);
+        }
     
       })
       .catch(error => {
@@ -115,10 +125,12 @@ const WaitingRoom = () => {
         console.log(response.data.user);
         setStatus(true);
         setNombre(response.data.username);
-        setUserID(response.data.userID)
+        setUserID(response.data.userID);
+        setIsLoading(false);
       })
       .catch(error => {
         setStatus(false);
+        setIsLoading(false);
       });
   }, []);
 
@@ -138,7 +150,6 @@ const WaitingRoom = () => {
   useEffect(() => {
     if (players !== null){
       if (players < 4){
-      console.log("aca");
       setPrint(`Hay ${players} jugadores acualmente, vuelva a intentarlo más tarde`);
       }
       else if (players === 4){
@@ -173,13 +184,7 @@ const WaitingRoom = () => {
           getGame();
         })
         .catch(error => {
-          if (error.response.status === 400){
-            setShowButton(true);
-            setPrint(`Ya te encuentras dentro de la partida`);
-          }
-          else {
-            setPrint(`La partida está llena :( `);
-          }
+          existingUser();
           console.error(error);
         });
     }
@@ -189,7 +194,9 @@ const WaitingRoom = () => {
 
  
 
-  if (!status) {
+  if (isLoading) {
+    return <div> </div>; // Mostrar un mensaje de carga mientras se verifica el estado
+  } else if (!status) {
     return (
       <Layout>
         <div className="Waiting">
