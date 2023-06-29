@@ -1,22 +1,19 @@
 
 .territory1:hover {
-  border-color: rgba(255, 0, 0, 1);
-  background-color: rgba(255, 0, 0, 0.3);
+  /* modify the transparency and not the color */
+  opacity: 0.7;
   z-index: 9999;
 }
 .territory2:hover {
-  border-color: rgba(0, 255, 0, 1);
-  background-color: rgba(0, 255, 0, 0.3);
+  opacity: 0.7;
   z-index: 9999;
 }
 .territory3:hover {
-  border-color: rgba(0, 0, 255, 1);
-  background-color: rgba(0, 0, 255, 0.3);
+  opacity: 0.7;
   z-index: 9999;
 }
 .territory4:hover {
-  border-color: rgba(0, 255, 255, 1);
-  background-color: rgba(0, 255, 255, 0.3);
+  opacity: 0.7;
   z-index: 9999;
 }
 

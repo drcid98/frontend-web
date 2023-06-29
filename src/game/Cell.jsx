@@ -1,12 +1,29 @@
 import React, { useState } from "react";
 import Territory from "./Territory";
+import TerritoryWrapper from "./Territory";
 import './Cell.css'
+
+function ShowAdd(obj) {
+  let lastValue = obj.value;
+  obj.value += 1;
+  return lastValue;
+
+}
 
 function Cell(props) {
   const { name, type } = props.index;
   let className = "cell";
   let classType = "";
   const [Territories, setTerritories] = useState(Array(4).fill(null));
+
+  // let _id = props.firstId
+
+  // Creo que en esta seccion es donde se deberia agregar algo para setear el color de cada
+  // territorio. En Territory.jsx se deben cambiar el value por props.value para pdoer acceder 
+  // directamente a lo que se le pasa desde aca
+
+  let idObj = {value: props.firstId};
+  
 
   switch (name) {
     case 0:
@@ -62,8 +79,8 @@ function Cell(props) {
     return (
       <div className={className} onClick={props.onClick}>
         <div className={classType}>
-          <Territory index={0} value={Territories[0]} />
-          <Territory index={1} value={Territories[1]} />
+          <TerritoryWrapper index={0} value={Territories[0]} id={ShowAdd(idObj)}/>
+          <TerritoryWrapper index={1} value={Territories[1]} id={ShowAdd(idObj)}/>
           </div>
       </div>
       
@@ -74,8 +91,8 @@ function Cell(props) {
     return (
       <div className={className} onClick={props.onClick}>
         <div className={classType}>
-          <Territory index={0} value={Territories[2]} />
-          <Territory index={1} value={Territories[3]} />
+          <TerritoryWrapper index={0} value={Territories[2]} id={ShowAdd(idObj)}/>
+          <TerritoryWrapper index={1} value={Territories[3]} id={ShowAdd(idObj)}/>
           </div>
       </div>
       
@@ -86,10 +103,10 @@ function Cell(props) {
     return (
       <div className={className} onClick={props.onClick}>
         <div className={classType}>
-          <Territory index={0} value={Territories[0]} />
-          <Territory index={1} value={Territories[1]} />
-          <Territory index={2} value={Territories[2]} />
-          <Territory index={3} value={Territories[3]} />
+          <TerritoryWrapper index={0} value={Territories[0]} id={ShowAdd(idObj)}/>
+          <TerritoryWrapper index={1} value={Territories[1]} id={ShowAdd(idObj)}/>
+          <TerritoryWrapper index={2} value={Territories[2]} id={ShowAdd(idObj)}/>
+          <TerritoryWrapper index={3} value={Territories[3]} id={ShowAdd(idObj)}/>
           </div>
       </div>
       

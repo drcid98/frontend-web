@@ -12,6 +12,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --color-jugador-1: #ff0000;
+  --color-jugador-2: #0000ff;
+  --color-jugador-3: #00ff00;
+  --color-jugador-4: rgba(50, 255, 255, 1);
+
 }
 
 #root {

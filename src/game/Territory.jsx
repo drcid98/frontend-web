@@ -1,42 +1,162 @@
-import React, { useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import "./Territory.css"
+import { GameContext } from "./provider";
 
-function Territory(props) {
-  let className = "territory";
+
+export function TerritoryWrapper({ index, value, id }) {
+  const { state } = useContext(GameContext);
+  const [territoryData, setTerritoryData] = useState(null);
+
+  useEffect(() => {
+    if (state !== null) {
+      const territories = state.territories;
+      const territoryData = territories[id];
+      setTerritoryData(territoryData);
+    }
+  }, [state, id]);
+
+  let className = 'territory';
+  let territoryId = 1;
   const [active, setActive] = useState(false);
 
-  switch (props.index) {
+  const handleClick = () => {
+    setActive(!active);
+  };
+
+  switch (index) {
     case 0:
-      className += " territory1";
+      className += ' territory1';
+      territoryId = 0;
       break;
     case 1:
-      className += " territory2";
+      className += ' territory2';
+      territoryId = 2;
       break;
     case 2:
-      className += " territory3";
+      className += ' territory3';
+      territoryId = 3;
       break;
     case 3:
-      className += " territory4";
+      className += ' territory4';
+      territoryId = 4;
       break;
     default:
+      className += ' territoryDefault';
+      territoryId = 999;
       break;
   }
 
-  const handleClick = () => {
-    if (!active) {
-    setActive(true);
+  let territoryValue = 'white';
+  if (territoryData) {
+    const playerId = territoryData.player_id;
+    if (playerId === 1) {
+      territoryValue = 'red';
+    } else if (playerId === 2) {
+      territoryValue = 'blue';
+    } else if (playerId === 3) {
+      territoryValue = 'green';
+    } else if (playerId === 4) {
+      territoryValue = 'cyan';
     }
-    else {
-      setActive(false);
-    }
-  };
-
+  }
 
   return (
-    <button className={`${className} ${active ? "active" : ""}`} onClick={handleClick}>
-      {props.value}
+    <button
+      value={territoryValue}
+      id={id}
+      className={`${className} ${active ? 'active' : ''}`}
+      onClick={handleClick}
+    >
+      {territoryValue}
+      {id}
     </button>
   );
 }
 
-export default Territory;
+
+function Territory(props) {
+  let className = "territory";
+  let id = 1;
+  const [active, setActive] = useState(false);
+  let value = "white";
+
+  const handleClick = () => {
+    setActive(!active);
+  };
+
+	// const context = useContext(GameContext)
+
+// 	useEffect(() => {
+//   // Del territorio 0
+// 		useTerritoryData(20).then((data) => {
+// 			console.log(data);
+
+// 			const playerId = data['player_id'];
+
+// 			if (playerId == 1) {
+// 				// console.log("color rojo");
+// 				value = "red";
+// 			}
+// 			else if (playerId == 2) {
+// 				// console.log("color verde");
+// 				value = "green";
+// 			}
+// 			else if (playerId == 3) {
+// 				// console.log("color azul");
+// 				value = "blue";
+// 			}
+// 			else if (playerId == 4) {
+// 				// console.log("color cyan");
+// 				value = "cyan";
+// 			}
+// 			else {
+// 				// console.log("color blanco");
+// 				value = "white";
+// 			}
+// 		});
+// }, []);
+	
+	switch (props.index) {
+		case 0:
+			className += " territory1";
+			id = 0;
+			break;
+		case 1:
+			className += " territory2";
+			id = 2;
+			break;
+		case 2:
+			className += " territory3";
+			id = 3;
+			break;
+		case 3:
+			className += " territory4";
+			id = 4;
+			break;
+		default:
+			className += " territoryDefault";
+			id = 999;
+			break;
+	}
+	
+
+
+  console.log(props.value);
+
+
+  return (
+      <button
+				value={props.value}
+				id={props.id}
+				className={`${className} ${active ? "active" : ""}`}
+				onClick={handleClick}
+			>
+        {props.value}
+        {props.id}
+        {/* {id} */}
+      </button>
+  );
+}
+
+
+export default TerritoryWrapper;
