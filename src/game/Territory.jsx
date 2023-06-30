@@ -56,8 +56,8 @@ export function TerritoryWrapper({ index, value, id }) {
       break;
   }
 
-  console.log(territoryData);
-  
+  // console.log(territoryData);
+
   let troops = 0;
   if (territoryData) {
     troops = territoryData.troops;

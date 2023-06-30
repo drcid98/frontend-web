@@ -8,3 +8,16 @@
     aspect-ratio: 10 / 3;
     height: 100%;
   }
+
+.jugador1 {
+  background-color: var(--color-jugador-1);
+}
+.jugador2 {
+  background-color: var(--color-jugador-2);
+}
+.jugador3 {
+  background-color: var(--color-jugador-3);
+}
+.jugador4 {
+  background-color: var(--color-jugador-4);
+}
