@@ -56,7 +56,12 @@ export function TerritoryWrapper({ index, value, id }) {
       break;
   }
 
-    console.log(territoryData);
+  console.log(territoryData);
+  
+  let troops = 0;
+  if (territoryData) {
+    troops = territoryData.troops;
+  }
 
   let territoryValue = 'white';
   // console.log(territoryData);
@@ -84,7 +89,7 @@ export function TerritoryWrapper({ index, value, id }) {
       {/* {territoryValue} */}
       id: {id}
       <br />
-      troops: {territoryData.troops}
+      troops: {troops}
     </button>
   );
 }
