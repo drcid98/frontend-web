@@ -2,6 +2,16 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import "./Territory.css"
 import { GameContext } from "./provider";
 
+function getPlayerId(state, userId) {
+  for (let i = 0; i < state.players.length; i++) {
+    if (state.players[i].id === userId) {
+      return state.players[i].color;
+    }
+  
+  }
+  return -1;
+}
+
 
 export function TerritoryWrapper({ index, value, id }) {
   const { state } = useContext(GameContext);
@@ -46,16 +56,20 @@ export function TerritoryWrapper({ index, value, id }) {
       break;
   }
 
+    console.log(territoryData);
+
   let territoryValue = 'white';
+  // console.log(territoryData);
   if (territoryData) {
     const playerId = territoryData.player_id;
-    if (playerId === 1) {
+    const colorId = getPlayerId(state, playerId);
+    if (colorId === 1) {
       territoryValue = 'red';
-    } else if (playerId === 2) {
+    } else if (colorId === 2) {
       territoryValue = 'blue';
-    } else if (playerId === 3) {
+    } else if (colorId === 3) {
       territoryValue = 'green';
-    } else if (playerId === 4) {
+    } else if (colorId === 4) {
       territoryValue = 'cyan';
     }
   }
@@ -67,8 +81,10 @@ export function TerritoryWrapper({ index, value, id }) {
       className={`${className} ${active ? 'active' : ''}`}
       onClick={handleClick}
     >
-      {territoryValue}
-      {id}
+      {/* {territoryValue} */}
+      id: {id}
+      <br />
+      troops: {territoryData.troops}
     </button>
   );
 }
