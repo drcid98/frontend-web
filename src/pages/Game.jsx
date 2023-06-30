@@ -34,19 +34,20 @@ function Game() {
   useEffect(() => {
     if (state !== null) {
       const players = state.players;
-      console.log(players);
+      // console.log(players);
       for (let i=0; i<players.length; i++) {
         if (players[i].user_id === userID) {
           setPlayerData(players[i]);
+          
         }
       }
     }
   }, [state, userID]);
 
-  // console.log(playerData);
-
+  console.log(playerData);
+  
   let textColor = 'jugador' + playerData?.color;
-
+  
 
 
   return (
@@ -61,12 +62,12 @@ function Game() {
         </div>
         <Phase playerId={playerData?.id} gameId={playerData?.game_id}/>
 
-        Tu usuario: {userID}  
+        Tu usuario: {userID}
 
         <div className="info-jugador">
           Tu color:
-          <div className={`${textColor}`}>
-            {playerData?.color}
+          <div className={`jugador ${textColor}`}>
+            {/* {playerData?.color} */}
           </div>
         </div>
 

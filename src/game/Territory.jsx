@@ -19,6 +19,7 @@ export function TerritoryWrapper({ index, value, id }) {
 
   useEffect(() => {
     if (state !== null) {
+      // console.log(state);
       const territories = state.territories;
       const territoryData = territories[id];
       setTerritoryData(territoryData);
@@ -89,7 +90,7 @@ export function TerritoryWrapper({ index, value, id }) {
       {/* {territoryValue} */}
       id: {id}
       <br />
-      troops: {troops}
+      T: {troops}
     </button>
   );
 }
@@ -105,37 +106,6 @@ function Territory(props) {
     setActive(!active);
   };
 
-	// const context = useContext(GameContext)
-
-// 	useEffect(() => {
-//   // Del territorio 0
-// 		useTerritoryData(20).then((data) => {
-// 			console.log(data);
-
-// 			const playerId = data['player_id'];
-
-// 			if (playerId == 1) {
-// 				// console.log("color rojo");
-// 				value = "red";
-// 			}
-// 			else if (playerId == 2) {
-// 				// console.log("color verde");
-// 				value = "green";
-// 			}
-// 			else if (playerId == 3) {
-// 				// console.log("color azul");
-// 				value = "blue";
-// 			}
-// 			else if (playerId == 4) {
-// 				// console.log("color cyan");
-// 				value = "cyan";
-// 			}
-// 			else {
-// 				// console.log("color blanco");
-// 				value = "white";
-// 			}
-// 		});
-// }, []);
 	
 	switch (props.index) {
 		case 0:
@@ -162,7 +132,7 @@ function Territory(props) {
 	
 
 
-  console.log(props.value);
+  // console.log(props.value);
 
 
   return (
