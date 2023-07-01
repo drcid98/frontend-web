@@ -5,6 +5,7 @@ import { GameContext } from "./provider";
 function getPlayerId(state, userId) {
   for (let i = 0; i < state.players.length; i++) {
     if (state.players[i].id === userId) {
+      console.log(state.players[i].color);
       return state.players[i].color;
     }
   
@@ -40,6 +41,7 @@ export function  TerritoryWrapper({ index, id, props}) {
       // const territoryData = territories[id];
       const territoryData = getTerritoryId(state, id);
       setTerritoryData(territoryData);
+      setTroops(territoryData.troops);
     }
   }, [state, id]);
 
@@ -151,9 +153,9 @@ export function  TerritoryWrapper({ index, id, props}) {
     if (colorId === 1) {
       territoryValue = 'red';
     } else if (colorId === 2) {
-      territoryValue = 'blue';
-    } else if (colorId === 3) {
       territoryValue = 'green';
+    } else if (colorId === 3) {
+      territoryValue = 'blue';
     } else if (colorId === 4) {
       territoryValue = 'cyan';
     }
