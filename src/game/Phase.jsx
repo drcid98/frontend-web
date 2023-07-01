@@ -29,16 +29,27 @@ function PhaseShift(phase){
 function Phase(props) {
 	const [wonTroops, setWonTroops] = useState(0);
 	const [gameInfo, setGameInfo] = useState(null);
+	// const [changesInTroops, setChangesInTroops] = useState(false);
+
 	const playerId = props.playerId;
+
+	const sharedInfo = props.sharedInfo;
+
+	const onTroopsChanged = props.onTroopsChanged;
+	
 	const [isTurn, setIsTurn] = useState(false);
 	const { state } = useContext(GameContext);
-  	const [playerData, setPlayerData] = useState(null);
-	// console.log(playerData?.color);
-	// console.log(state?.game.turn);
-	// console.log(state?.game.stage);
-	// console.log(playerData?.color !== state?.game.turn ? 3 : state?.game.stage - 1);
-	// console.log("???");
+  const [playerData, setPlayerData] = useState(null);
+
 	const [activeIndex, setActiveIndex] = useState(0);
+
+	// console.log('Shared Info:', sharedInfo?.button);
+
+	const buttonsInfo = sharedInfo?.button;
+
+	const handleTroopsChange = (troopsInfo) => {
+		onTroopsChanged(troopsInfo);
+	};
 
 	useEffect(() => {
 		if (state !== null) {
@@ -62,21 +73,30 @@ function Phase(props) {
 		if (text === "Refuerzo") {
 			axios.post(`${import.meta.env.VITE_BACKEND_URL}/draft`, {
 				player_id: playerId,
-				territory_id: 1,
+				territory_id: buttonsInfo?.id + 1,
 			  })
 			.then(response => {
 				setActiveIndex((prevIndex) => (prevIndex + 1) % 4);
 				setIsTurn(false);
+				axios({
+					method: 'get',
+					url: `${import.meta.env.VITE_BACKEND_URL}/start/${state.game.id}`,
+				})
+				.then(response => {
+					// setChangesInTroops(response.data.territories);
+					// console.log("territory data variable: ", changesInTroops);
+					handleTroopsChange(response.data.territories);
+				})
 			})
 			.catch(error => {
 				console.error(error);
 			});
 		}
+
+
 	};
-	if (activeIndex === 4){
-		setActiveIndex(0);
-	}
-	
+
+
 
 	
 	// const gameId = props.gameId;

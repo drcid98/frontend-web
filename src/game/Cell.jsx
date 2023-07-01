@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Territory from "./Territory";
 import TerritoryWrapper from "./Territory";
 import './Cell.css'
@@ -12,17 +12,28 @@ function ShowAdd(obj) {
 
 function Cell(props) {
   const { name, type } = props.index;
+  const index = props.index;
+  const firstId = props.firstId;
+  const onButtonPress = props.onButtonPress;
+  const sharedInfo = props.sharedInfo;
+
   let className = "cell";
   let classType = "";
   const [Territories, setTerritories] = useState(Array(4).fill(null));
 
-  // let _id = props.firstId
+  const handleButtonPress = (id) => {
+    const buttonInfo = { 'button': {name, id} };
+    setActive(!active);
+    onButtonPress(buttonInfo);
+  };
 
-  // Creo que en esta seccion es donde se deberia agregar algo para setear el color de cada
-  // territorio. En Territory.jsx se deben cambiar el value por props.value para pdoer acceder 
-  // directamente a lo que se le pasa desde aca
 
   let idObj = {value: props.firstId};
+
+  let t1 = null;
+  let t2 = null;
+  let t3 = null;
+  let t4 = null;
   
 
   switch (name) {
@@ -80,10 +91,25 @@ function Cell(props) {
     setActive(!active);
   };
 
+  useEffect(() => {
+    if (sharedInfo !== null) {
+      if (name == 6 || name == 7){
+        t1 = TerritoryWrapper(0, ShowAdd(idObj), sharedInfo);
+        t2 = TerritoryWrapper(1, ShowAdd(idObj), sharedInfo);
+      }
+      else {
+        t1 = TerritoryWrapper(0, ShowAdd(idObj), sharedInfo);
+        t2 = TerritoryWrapper(1, ShowAdd(idObj), sharedInfo);
+        t3 = TerritoryWrapper(2, ShowAdd(idObj), sharedInfo);
+        t4 = TerritoryWrapper(3, ShowAdd(idObj), sharedInfo);
+      }
+    }
+  }, [sharedInfo]);
+
 
   if (name == 6 || name == 7){
-    let t1 = TerritoryWrapper(0, ShowAdd(idObj));
-    let t2 = TerritoryWrapper(1, ShowAdd(idObj));
+    t1 = TerritoryWrapper(0, ShowAdd(idObj), sharedInfo);
+    t2 = TerritoryWrapper(1, ShowAdd(idObj), sharedInfo);
     
     return (
       <div className={className} onClick={props.onClick}>
@@ -92,7 +118,7 @@ function Cell(props) {
             value={t1[0]}
             id={t1[1]}
             className={t1[2]}
-            onClick={handleClick}
+            onClick={() => handleButtonPress(t1[1])}
             >
             {/* {territoryValue} */}
             id: {t1[1]}
@@ -104,7 +130,7 @@ function Cell(props) {
             value={t2[0]}
             id={t2[1]}
             className={t2[2]}
-            onClick={handleClick}
+            onClick={() => handleButtonPress(t2[1])}
             >
             {/* {territoryValue} */}
             id: {t2[1]}
@@ -118,10 +144,10 @@ function Cell(props) {
   }
 
   else {
-    let t1 = TerritoryWrapper(0, ShowAdd(idObj));
-    let t2 = TerritoryWrapper(1, ShowAdd(idObj));
-    let t3 = TerritoryWrapper(2, ShowAdd(idObj));
-    let t4 = TerritoryWrapper(3, ShowAdd(idObj));
+    t1 = TerritoryWrapper(0, ShowAdd(idObj), sharedInfo);
+    t2 = TerritoryWrapper(1, ShowAdd(idObj), sharedInfo);
+    t3 = TerritoryWrapper(2, ShowAdd(idObj), sharedInfo);
+    t4 = TerritoryWrapper(3, ShowAdd(idObj), sharedInfo);
 
     return (
       <div className={className} onClick={props.onClick}>
@@ -130,9 +156,8 @@ function Cell(props) {
             value={t1[0]}
             id={t1[1]}
             className={t1[2]}
-            onClick={handleClick}
+            onClick={() => handleButtonPress(t1[1])}
             >
-            {/* {territoryValue} */}
             id: {t1[1]}
             <br />
             T: {t1[3]}
@@ -141,9 +166,8 @@ function Cell(props) {
             value={t2[0]}
             id={t2[1]}
             className={t2[2]}
-            onClick={handleClick}
+            onClick={() => handleButtonPress(t2[1])}
             >
-            {/* {territoryValue} */}
             id: {t2[1]}
             <br />
             T: {t2[3]}
@@ -152,9 +176,8 @@ function Cell(props) {
             value={t3[0]}
             id={t3[1]}
             className={t3[2]}
-            onClick={handleClick}
+            onClick={() => handleButtonPress(t3[1])}
             >
-            {/* {territoryValue} */}
             id: {t3[1]}
             <br />
             T: {t3[3]}
@@ -163,9 +186,8 @@ function Cell(props) {
             value={t4[0]}
             id={t4[1]}
             className={t4[2]}
-            onClick={handleClick}
+            onClick={() => handleButtonPress(t4[1])}
             >
-            {/* {territoryValue} */}
             id: {t4[1]}
             <br />
             T: {t4[3]}

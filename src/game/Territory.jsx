@@ -12,8 +12,20 @@ function getPlayerId(state, userId) {
   return -1;
 }
 
+function getTerritoryId(state, territoryId) {
+  for (let i = 0; i < state.territories.length; i++) {
+    if (state.territories[i].id === territoryId + 1) {
+      return state.territories[i];
+    }
+  }
+  return null;
+}
 
-export function TerritoryWrapper( index, id ) {
+
+export function TerritoryWrapper( index, id, sharedInfo ) {
+
+  // console.log('Shared Info:', sharedInfo);
+
   const { state } = useContext(GameContext);
   const [territoryData, setTerritoryData] = useState(null);
 
@@ -21,7 +33,8 @@ export function TerritoryWrapper( index, id ) {
     if (state !== null) {
       // console.log(state);
       const territories = state.territories;
-      const territoryData = territories[id];
+      // const territoryData = territories[id];
+      const territoryData = getTerritoryId(state, id);
       setTerritoryData(territoryData);
     }
   }, [state, id]);
@@ -29,7 +42,10 @@ export function TerritoryWrapper( index, id ) {
   let className = 'territory';
   let territoryId = null;
   const [active, setActive] = useState(false);
+  
 
+  let troops = 0;
+  
   const handleClick = () => {
     setActive(!active);
   };
@@ -59,7 +75,19 @@ export function TerritoryWrapper( index, id ) {
 
   // console.log(territoryData);
 
-  let troops = 0;
+  useEffect(() => {
+    if (sharedInfo !== null) {
+      // console.log("entra con: ", sharedInfo);
+      for (let i = 0; i < sharedInfo.length; i++) {
+        if (sharedInfo[i].id === territoryData?.id) {
+          // console.log("entra al if");
+          troops = sharedInfo[i].troops;
+          
+        }
+      }
+    }
+  }, [sharedInfo]);
+
   if (territoryData) {
     troops = territoryData.troops;
   }
@@ -79,6 +107,7 @@ export function TerritoryWrapper( index, id ) {
       territoryValue = 'cyan';
     }
   }
+  console.log("tropas para el return: ", troops);
 
   return ([territoryValue, id, `${className} ${active ? 'active' : ''}`, troops]
   );

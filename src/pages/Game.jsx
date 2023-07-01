@@ -11,6 +11,8 @@ import axios from 'axios';
 function Game() {
   const { token } = useContext(AuthContext);
   const [userID, setUserID] = useState();
+	// info compartida sobre botones apretados
+	const [sharedInfo, setSharedInfo] = useState(null);
 
   useEffect(() => {
     axios({
@@ -48,34 +50,46 @@ function Game() {
   
   let textColor = 'jugador' + playerData?.color;
   
+	// Para manejar el estado de los botones
+	const handleButtonPress = (buttonInfo) => {
+    setSharedInfo(buttonInfo);
+  };
+
+	const handleTroopsChange = (troopsInfo) => {
+		console.log("cambian las tropas");
+		console.log("troopsInfo", troopsInfo);
+		setSharedInfo(troopsInfo);
+	};
 
 
   return (
-    // Aca hay que inicializar el id con el id del juego actual
-    
+		// Aca hay que inicializar el id con el id del juego actual
+		<Layout>
+		<div className="page-contanier">
+			<h1> DCConquista </h1>
+			<div className="game-container">
+				<Board sharedInfo={sharedInfo} onButtonPress={handleButtonPress} />
+			</div>
+			<Phase
+				playerId={playerData?.id}
+				gameId={playerData?.game_id}
+				sharedInfo={sharedInfo}
+				onTroopsChanged={handleTroopsChange} />
 
-      <Layout>
-      <div className="page-contanier">
-        <h1> DCConquista </h1>
-        <div className="game-container">
-          <Board/>
-        </div>
-        <Phase playerId={playerData?.id} gameId={playerData?.game_id}/>
+			Tu usuario: {userID}
 
-        Tu usuario: {userID}
+			<div className="info-jugador">
+				Tu color:
+				<div className={`jugador ${textColor}`}>
+					{/* {playerData?.color} */}
+				</div>
+			</div>
 
-        <div className="info-jugador">
-          Tu color:
-          <div className={`jugador ${textColor}`}>
-            {/* {playerData?.color} */}
-          </div>
-        </div>
-
-      </div>
-      
-      </Layout>
-    
-    );
+		</div>
+		
+		</Layout>
+	
+	);
 }
 
 
