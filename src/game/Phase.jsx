@@ -54,9 +54,10 @@ function Phase(props) {
 	useEffect(() => {
 		if (state !== null) {
 			const players = state.players;
-			// console.log(players);
+			console.log(players);
 			for (let i=0; i<players.length; i++) {
-				if (players[i].user_id === playerId) {
+				if (players[i].id === playerId) {
+					console.log("Soy yooo")
 					setPlayerData(players[i]);
 				}
 			}
@@ -74,6 +75,65 @@ function Phase(props) {
 			axios.post(`${import.meta.env.VITE_BACKEND_URL}/draft`, {
 				player_id: playerId,
 				territory_id: buttonsInfo?.id + 1,
+			  })
+			.then(response => {
+				setActiveIndex((prevIndex) => (prevIndex + 1) % 4);
+				setIsTurn(false);
+				axios({
+					method: 'get',
+					url: `${import.meta.env.VITE_BACKEND_URL}/start/${state.game.id}`,
+				})
+				.then(response => {
+					// setChangesInTroops(response.data.territories);
+					// console.log("territory data variable: ", changesInTroops);
+					handleTroopsChange(response.data.territories);
+				})
+			})
+			.catch(error => {
+				console.error(error);
+			});
+		}
+		else if (text === "Ataque") {
+			console.log({
+				player_id: playerId,
+				attacking_id: buttonsInfo?.id + 1,
+				attacked_id: buttonsInfo?.id2 + 1,
+			  });
+			axios.post(`${import.meta.env.VITE_BACKEND_URL}/attack`, {
+				player_id: playerId,
+				attacking_id: buttonsInfo?.id + 1,
+				attacked_id: buttonsInfo?.id2 + 1,
+			  })
+			.then(response => {
+				setActiveIndex((prevIndex) => (prevIndex + 1) % 4);
+				setIsTurn(false);
+				axios({
+					method: 'get',
+					url: `${import.meta.env.VITE_BACKEND_URL}/start/${state.game.id}`,
+				})
+				.then(response => {
+					// setChangesInTroops(response.data.territories);
+					// console.log("territory data variable: ", changesInTroops);
+					handleTroopsChange(response.data.territories);
+				})
+			})
+			.catch(error => {
+				console.error(error);
+			});
+		}
+
+		else if (text === "Fortalecimiento") {
+			console.log({
+				player_id: playerId,
+				source_territory_id: buttonsInfo?.id + 1,
+				dest_territory_id: buttonsInfo?.id2 + 1,
+				moving_troops:5 // FIJO POR AHORA, CAMBIAR
+			  });
+			axios.post(`${import.meta.env.VITE_BACKEND_URL}/fortify`, {
+				player_id: playerId,
+				source_territory_id: buttonsInfo?.id + 1,
+				dest_territory_id: buttonsInfo?.id2 + 1,
+				moving_troops:5 // FIJO POR AHORA, CAMBIAR
 			  })
 			.then(response => {
 				setActiveIndex((prevIndex) => (prevIndex + 1) % 4);

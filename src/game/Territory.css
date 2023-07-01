@@ -7,11 +7,11 @@ button[value="red"]{
 }
 
 button[value="green"] {
-  background-color: var(--color-jugador-2);
+  background-color: var(--color-jugador-3);
 }
 
 button[value="blue"] {
-  background-color: var(--color-jugador-3);
+  background-color: var(--color-jugador-2);
 }
 
 button[value="cyan"]{

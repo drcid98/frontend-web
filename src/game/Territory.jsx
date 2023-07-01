@@ -22,12 +22,15 @@ function getTerritoryId(state, territoryId) {
 }
 
 
-export function TerritoryWrapper( index, id, sharedInfo ) {
-
-  // console.log('Shared Info:', sharedInfo);
-
+export function  TerritoryWrapper({ index, id, props}) {
   const { state } = useContext(GameContext);
   const [territoryData, setTerritoryData] = useState(null);
+  const onButtonPress = props.onButtonPress;
+  const sharedInfo = props.sharedInfo;
+  const [troops, setTroops] = useState(0);
+
+  const buttonsInfo = sharedInfo?.button;
+
 
   useEffect(() => {
     if (state !== null) {
@@ -43,11 +46,21 @@ export function TerritoryWrapper( index, id, sharedInfo ) {
   let territoryId = null;
   const [active, setActive] = useState(false);
   
-
-  let troops = 0;
   
-  const handleClick = () => {
-    setActive(!active);
+  const handleButtonPress = (id) => {
+    if (buttonsInfo?.id && !buttonsInfo?.id2){
+      console.log("Apretando el segundo", id);
+      const id2 = id;
+      const buttonInfo = { 'button': {'id': buttonsInfo.id, 'id2': id2} };
+      setActive(!active);
+      onButtonPress(buttonInfo);
+    }
+    else {
+      console.log("me apretaron", id);
+      const buttonInfo = { 'button': {'id':id} };
+      setActive(!active);
+      onButtonPress(buttonInfo);
+    }
   };
 
   switch (index) {
@@ -76,20 +89,21 @@ export function TerritoryWrapper( index, id, sharedInfo ) {
   // console.log(territoryData);
 
   useEffect(() => {
+    console.log("Me refrescaron");
     if (sharedInfo !== null) {
       // console.log("entra con: ", sharedInfo);
       for (let i = 0; i < sharedInfo.length; i++) {
         if (sharedInfo[i].id === territoryData?.id) {
           // console.log("entra al if");
-          troops = sharedInfo[i].troops;
+          setTroops(sharedInfo[i].troops);
           
         }
       }
     }
   }, [sharedInfo]);
 
-  if (territoryData) {
-    troops = territoryData.troops;
+  if (territoryData && !troops) {
+    setTroops(territoryData.troops);
   }
 
   let territoryValue = 'white';
@@ -107,10 +121,20 @@ export function TerritoryWrapper( index, id, sharedInfo ) {
       territoryValue = 'cyan';
     }
   }
-  console.log("tropas para el return: ", troops);
 
-  return ([territoryValue, id, `${className} ${active ? 'active' : ''}`, troops]
-  );
+  return (
+    <button
+      value={territoryValue}
+      id={id}
+      className={`${className} ${active ? 'active' : ''}`}
+      onClick={() => handleButtonPress(id)}
+    >
+      {/* {territoryValue} */}
+      id: {id}
+      <br />
+      troops: {troops}
+    </button>
+);
 }
 
 export default TerritoryWrapper;
