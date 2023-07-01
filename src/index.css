@@ -13,10 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --color-jugador-1: #ff0000;
-  --color-jugador-2: #00ff00;
-  --color-jugador-3: #0000ff;
-  --color-jugador-4: rgba(50, 255, 255, 1);
+  --color-jugador-1: #bd1d1d;
+  --color-jugador-2: #14b914;
+  --color-jugador-3: #1e1ebe;
+  --color-jugador-4: rgb(26, 196, 196);
 
 }
 

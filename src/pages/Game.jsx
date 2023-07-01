@@ -56,7 +56,7 @@ function Game() {
   };
 
 	const handleTroopsChange = (troopsInfo) => {
-		console.log("cambian las tropas");
+		// console.log("cambian las tropas");
 		console.log("troopsInfo", troopsInfo);
 		setSharedInfo(troopsInfo);
 	};

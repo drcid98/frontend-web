@@ -25,6 +25,7 @@ function getTerritoryId(state, territoryId) {
 export function  TerritoryWrapper({ index, id, props}) {
   const { state } = useContext(GameContext);
   const [territoryData, setTerritoryData] = useState(null);
+  let [territoryValue, setTerritoryValue] = useState(null);
   const onButtonPress = props.onButtonPress;
   const sharedInfo = props.sharedInfo;
   const [troops, setTroops] = useState(0);
@@ -89,7 +90,7 @@ export function  TerritoryWrapper({ index, id, props}) {
   // console.log(territoryData);
 
   useEffect(() => {
-    console.log("Me refrescaron");
+    // console.log("Me refrescaron");
     if (sharedInfo !== null) {
       // console.log("entra con: ", sharedInfo);
       for (let i = 0; i < sharedInfo.length; i++) {
@@ -102,11 +103,47 @@ export function  TerritoryWrapper({ index, id, props}) {
     }
   }, [sharedInfo]);
 
+
+  useEffect(() => {
+    // console.log("Me refrescaron");
+    if (sharedInfo !== null) {
+      // console.log("entra con: ", territoryData);
+      // setTroops(territoryData.troops);
+      console.log("entro y cambio");
+      console.log(sharedInfo);
+      for (let i = 0; i < sharedInfo.length; i++) {
+        const _playerId = sharedInfo[i].player_id;
+        console.log(sharedInfo);
+        const _colorId = getPlayerId(state, _playerId);
+        console.log("player id: ", _playerId);
+        let newValue = 'white';
+        if (_colorId === 1) {
+          newValue = 'red';
+        } else if (_colorId === 2) {
+          newValue = 'blue';
+        } else if (_colorId === 3) {
+          newValue = 'green';
+        } else if (_colorId === 4) {
+          newValue = 'cyan';
+        }
+        console.log("new value: ", newValue);
+        console.log("territoryValue: ", territoryValue);
+        if (newValue !== territoryValue) {
+          console.log(newValue);
+          setTerritoryValue('red');
+        }
+        
+  
+      }
+    }
+  }, [sharedInfo]);
+
+
   if (territoryData && !troops) {
     setTroops(territoryData.troops);
   }
 
-  let territoryValue = 'white';
+  // let territoryValue = 'white';
   // console.log(territoryData);
   if (territoryData) {
     const playerId = territoryData.player_id;
@@ -130,8 +167,8 @@ export function  TerritoryWrapper({ index, id, props}) {
       onClick={() => handleButtonPress(id)}
     >
       {/* {territoryValue} */}
-      id: {id}
-      <br />
+      {/* id: {id}
+      <br /> */}
       troops: {troops}
     </button>
 );
