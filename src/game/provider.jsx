@@ -43,7 +43,7 @@ export function GameProvider(props) {
 	useEffect(() => {
 		fetchGameData();
 	}, []);
-	// Esto de aca genera que se ejecute a cada rato
+	// Esto de aca genera que se ejecute al inicio
     
   return (
     <GameContext.Provider value={{state, fetchGameData}}>

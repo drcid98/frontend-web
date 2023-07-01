@@ -13,7 +13,7 @@ function getPlayerId(state, userId) {
 }
 
 
-export function TerritoryWrapper({ index, value, id }) {
+export function TerritoryWrapper( index, id ) {
   const { state } = useContext(GameContext);
   const [territoryData, setTerritoryData] = useState(null);
 
@@ -27,7 +27,7 @@ export function TerritoryWrapper({ index, value, id }) {
   }, [state, id]);
 
   let className = 'territory';
-  let territoryId = 1;
+  let territoryId = null;
   const [active, setActive] = useState(false);
 
   const handleClick = () => {
@@ -80,74 +80,8 @@ export function TerritoryWrapper({ index, value, id }) {
     }
   }
 
-  return (
-    <button
-      value={territoryValue}
-      id={id}
-      className={`${className} ${active ? 'active' : ''}`}
-      onClick={handleClick}
-    >
-      {/* {territoryValue} */}
-      id: {id}
-      <br />
-      T: {troops}
-    </button>
+  return ([territoryValue, id, `${className} ${active ? 'active' : ''}`, troops]
   );
 }
-
-
-function Territory(props) {
-  let className = "territory";
-  let id = 1;
-  const [active, setActive] = useState(false);
-  let value = "white";
-
-  const handleClick = () => {
-    setActive(!active);
-  };
-
-	
-	switch (props.index) {
-		case 0:
-			className += " territory1";
-			id = 0;
-			break;
-		case 1:
-			className += " territory2";
-			id = 2;
-			break;
-		case 2:
-			className += " territory3";
-			id = 3;
-			break;
-		case 3:
-			className += " territory4";
-			id = 4;
-			break;
-		default:
-			className += " territoryDefault";
-			id = 999;
-			break;
-	}
-	
-
-
-  // console.log(props.value);
-
-
-  return (
-      <button
-				value={props.value}
-				id={props.id}
-				className={`${className} ${active ? "active" : ""}`}
-				onClick={handleClick}
-			>
-        {props.value}
-        {props.id}
-        {/* {id} */}
-      </button>
-  );
-}
-
 
 export default TerritoryWrapper;

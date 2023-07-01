@@ -75,38 +75,101 @@ function Cell(props) {
       break;
   }
 
-  if (name == 5){
-    return (
-      <div className={className} onClick={props.onClick}>
-        <div className={classType}>
-          <TerritoryWrapper index={0} value={Territories[0]} id={ShowAdd(idObj)}/>
-          <TerritoryWrapper index={1} value={Territories[1]} id={ShowAdd(idObj)}/>
-          </div>
-      </div>
-      
-    );
-  }
+  const [active, setActive] = useState(false);
+  const handleClick = () => {
+    setActive(!active);
+  };
 
-  else if (name == 6 || name == 7){
+
+  if (name == 6 || name == 7){
+    let t1 = TerritoryWrapper(0, ShowAdd(idObj));
+    let t2 = TerritoryWrapper(1, ShowAdd(idObj));
+    
     return (
       <div className={className} onClick={props.onClick}>
         <div className={classType}>
-          <TerritoryWrapper index={0} value={Territories[2]} id={ShowAdd(idObj)}/>
-          <TerritoryWrapper index={1} value={Territories[3]} id={ShowAdd(idObj)}/>
-          </div>
+          <button
+            value={t1[0]}
+            id={t1[1]}
+            className={t1[2]}
+            onClick={handleClick}
+            >
+            {/* {territoryValue} */}
+            id: {t1[1]}
+            <br />
+            T: {t1[3]}
+          </button> 
+
+          <button
+            value={t2[0]}
+            id={t2[1]}
+            className={t2[2]}
+            onClick={handleClick}
+            >
+            {/* {territoryValue} */}
+            id: {t2[1]}
+            <br />
+            T: {t2[3]}
+          </button> 
+        
       </div>
-      
+    </div>
     );
   }
 
   else {
+    let t1 = TerritoryWrapper(0, ShowAdd(idObj));
+    let t2 = TerritoryWrapper(1, ShowAdd(idObj));
+    let t3 = TerritoryWrapper(2, ShowAdd(idObj));
+    let t4 = TerritoryWrapper(3, ShowAdd(idObj));
+
     return (
       <div className={className} onClick={props.onClick}>
         <div className={classType}>
-          <TerritoryWrapper index={0} value={Territories[0]} id={ShowAdd(idObj)}/>
-          <TerritoryWrapper index={1} value={Territories[1]} id={ShowAdd(idObj)}/>
-          <TerritoryWrapper index={2} value={Territories[2]} id={ShowAdd(idObj)}/>
-          <TerritoryWrapper index={3} value={Territories[3]} id={ShowAdd(idObj)}/>
+        <button
+            value={t1[0]}
+            id={t1[1]}
+            className={t1[2]}
+            onClick={handleClick}
+            >
+            {/* {territoryValue} */}
+            id: {t1[1]}
+            <br />
+            T: {t1[3]}
+        </button> 
+        <button
+            value={t2[0]}
+            id={t2[1]}
+            className={t2[2]}
+            onClick={handleClick}
+            >
+            {/* {territoryValue} */}
+            id: {t2[1]}
+            <br />
+            T: {t2[3]}
+        </button> 
+        <button
+            value={t3[0]}
+            id={t3[1]}
+            className={t3[2]}
+            onClick={handleClick}
+            >
+            {/* {territoryValue} */}
+            id: {t3[1]}
+            <br />
+            T: {t3[3]}
+        </button> 
+        <button
+            value={t4[0]}
+            id={t4[1]}
+            className={t4[2]}
+            onClick={handleClick}
+            >
+            {/* {territoryValue} */}
+            id: {t4[1]}
+            <br />
+            T: {t4[3]}
+          </button> 
           </div>
       </div>
       
