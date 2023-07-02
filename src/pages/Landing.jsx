@@ -19,9 +19,22 @@ function Landing() {
         <div className="container">
           <div className="card">
             <p>
-            DCConquista es un juego de estrategia y conquista en el que los jugadores compiten por la 
-            dominación total de una placa madre. Cada jugador asume el papel de un líder militar que busca conquistar 
-            territorios y expandir su imperio mientras se defiende de los ataques de otros jugadores.
+            <ul>
+              <li>Para entrar al juego, se encesita iniciar sesion primero en "login" dentro de la barra de navegación</li>
+              <li>Antes de lo anterior, para registrarse, se necesita dar click en "Signup" dentro de la barra de navegación</li>
+              <li>El juego solo se puede iniciar con 4 jugadores. No más ni menos, por lo que es necesario crear 4 cuentas y entrar con cada una de estas al juego</li>
+              <li>Una vez creadas las cuentas, se debe iniciar sesión con cada una y entrar al juego, en donde se podrá presionar un botón para verificar cuantos jugadores hay en espera</li>
+              <li>Una vez hayan entrado los 4 jugadores a esta "sala de espera", se mostrará un nuevo botón al checkear jugadores (jugar)</li>
+              <li>Al presionar el botón de jugar, se iniciará el juego</li>
+              <li>Para jugar, hay que tener en cuenta que para que las cosas se actualicen en el jugador actual, hay que apretar el botón que está abajo con un circulo y flecha</li>
+              <li>También, para evitar problemas, solo se debe presionar una vez cada botón y luego el botón para avanzar (flecha hacia la derecha)</li>
+              <li>En la primera fase, se refresca con el botón y se informará cuantas tropas puedes situar en uno de tus territorios. Debes presionar uno de estos y la flecha para avanzar</li>
+              <li>En la segunda fase, se refresca con el botón y deberás presionar, primero, el territorio con el que quieres atacar y, segundo, el territorio al que quieres atacar. Este último no debe ser de tu color</li>
+              <li>En la tercera fase, se refresca con el botón y deberás presionar, primero, el territorio desde donde quieres mover tropas y, segundo, el territorio al que quieres mover tropas. Este último debe ser de tu color</li>
+
+
+
+            </ul>
             </p>
           </div>
           
