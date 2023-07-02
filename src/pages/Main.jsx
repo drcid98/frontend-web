@@ -21,10 +21,10 @@ function Main() {
           <div className='options'>
             <div className='buttons'>
             <Button path='/waiting' label='Jugar' />
-            <Button path='/game' label='Partida rápida' />
+            {/* <Button path='/game' label='Partida rápida' /> */}
             <Button path='/rules' label='Instrucciones' />
             <Button path='/about' label='Acerca de' />
-            <Button path='/userCheck' label='UserCheck' />
+            {/* <Button path='/userCheck' label='UserCheck' /> */}
             </div>
           </div>
         </div>
