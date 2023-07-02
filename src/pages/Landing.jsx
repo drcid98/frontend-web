@@ -31,7 +31,8 @@ function Landing() {
               <li>En la primera fase, se refresca con el botón y se informará cuantas tropas puedes situar en uno de tus territorios. Debes presionar uno de estos y la flecha para avanzar</li>
               <li>En la segunda fase, se refresca con el botón y deberás presionar, primero, el territorio con el que quieres atacar y, segundo, el territorio al que quieres atacar. Este último no debe ser de tu color</li>
               <li>En la tercera fase, se refresca con el botón y deberás presionar, primero, el territorio desde donde quieres mover tropas y, segundo, el territorio al que quieres mover tropas. Este último debe ser de tu color</li>
-
+              <li>La fase no avanzará hasta que se ingrese una acción permitida. En general, cuando se ingresa algo no permitido es recomendado refrescar la página (desde el navegador, no con el botón) para asegurarse de que funcione</li>
+              <li>Cuando no es tu turno, hay que refrescar la página para poder ver los cambios hechos por otros jugadores y poder enterarse de cuando es tu turno.</li>
 
 
             </ul>
