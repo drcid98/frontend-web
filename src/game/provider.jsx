@@ -6,7 +6,7 @@ export const GameContext = createContext(null);
 
 export function GameProvider(props) {
   const [state, setState] = useState(null);
-  const [gameId, setGameId] = useState(props.gameId);
+//   const [gameId, setGameId] = useState(props.gameId);
 
 	const fetchGameData = async () => {
 		return new Promise((resolve, reject) => {
@@ -16,15 +16,24 @@ export function GameProvider(props) {
 					resolve(state);
 				}
 			}, 100); // Adjust the interval as per your needs
-	
-			axios.get(`${import.meta.env.VITE_BACKEND_URL}/start/${gameId}`)
+
+			axios.get(`${import.meta.env.VITE_BACKEND_URL}/games/available/diff`)
 			.then(response => {
-					setState(response.data);
+				const ID = response.data.id;
+				axios.get(`${import.meta.env.VITE_BACKEND_URL}/start/${ID}`)
+				.then(response => {
+						setState(response.data);
+				})
+				.catch(error => {
+						setState(error.message);
+						reject(error);
+				});
 			})
 			.catch(error => {
-					setState(error.message);
-					reject(error);
+				setState(error.message);
+				reject(error);
 			});
+	
 		});
 	};
 	
@@ -33,11 +42,11 @@ export function GameProvider(props) {
 	
 	useEffect(() => {
 		fetchGameData();
-	}, [gameId]);
-	// Esto de aca genera que se ejecute a cada rato
+	}, []);
+	// Esto de aca genera que se ejecute al inicio
     
   return (
-    <GameContext.Provider value={{state, fetchGameData, setGameId}}>
+    <GameContext.Provider value={{state, fetchGameData}}>
       {props.children}
     </GameContext.Provider>
   )

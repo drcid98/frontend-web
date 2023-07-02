@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Territory from "./Territory";
+import React, { useEffect, useState } from "react";
 import TerritoryWrapper from "./Territory";
 import './Cell.css'
 
@@ -12,18 +11,12 @@ function ShowAdd(obj) {
 
 function Cell(props) {
   const { name, type } = props.index;
+
   let className = "cell";
   let classType = "";
-  const [Territories, setTerritories] = useState(Array(4).fill(null));
-
-  // let _id = props.firstId
-
-  // Creo que en esta seccion es donde se deberia agregar algo para setear el color de cada
-  // territorio. En Territory.jsx se deben cambiar el value por props.value para pdoer acceder 
-  // directamente a lo que se le pasa desde aca
 
   let idObj = {value: props.firstId};
-  
+
 
   switch (name) {
     case 0:
@@ -75,24 +68,14 @@ function Cell(props) {
       break;
   }
 
-  if (name == 5){
-    return (
-      <div className={className} onClick={props.onClick}>
-        <div className={classType}>
-          <TerritoryWrapper index={0} value={Territories[0]} id={ShowAdd(idObj)}/>
-          <TerritoryWrapper index={1} value={Territories[1]} id={ShowAdd(idObj)}/>
-          </div>
-      </div>
-      
-    );
-  }
 
-  else if (name == 6 || name == 7){
+  if (name == 6 || name == 7){
+    
     return (
       <div className={className} onClick={props.onClick}>
         <div className={classType}>
-          <TerritoryWrapper index={0} value={Territories[2]} id={ShowAdd(idObj)}/>
-          <TerritoryWrapper index={1} value={Territories[3]} id={ShowAdd(idObj)}/>
+          <TerritoryWrapper index={0} id={ShowAdd(idObj)} props={props}/>
+          <TerritoryWrapper index={1} id={ShowAdd(idObj)} props={props}/>
           </div>
       </div>
       
@@ -100,13 +83,14 @@ function Cell(props) {
   }
 
   else {
+
     return (
       <div className={className} onClick={props.onClick}>
         <div className={classType}>
-          <TerritoryWrapper index={0} value={Territories[0]} id={ShowAdd(idObj)}/>
-          <TerritoryWrapper index={1} value={Territories[1]} id={ShowAdd(idObj)}/>
-          <TerritoryWrapper index={2} value={Territories[2]} id={ShowAdd(idObj)}/>
-          <TerritoryWrapper index={3} value={Territories[3]} id={ShowAdd(idObj)}/>
+          <TerritoryWrapper index={0} id={ShowAdd(idObj)} props={props}/>
+          <TerritoryWrapper index={1} id={ShowAdd(idObj)} props={props}/>
+          <TerritoryWrapper index={2} id={ShowAdd(idObj)} props={props}/>
+          <TerritoryWrapper index={3} id={ShowAdd(idObj)} props={props}/>
           </div>
       </div>
       

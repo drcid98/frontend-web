@@ -5,6 +5,7 @@ import { GameContext } from "./provider";
 function getPlayerId(state, userId) {
   for (let i = 0; i < state.players.length; i++) {
     if (state.players[i].id === userId) {
+      console.log(state.players[i].color);
       return state.players[i].color;
     }
   
@@ -12,25 +13,69 @@ function getPlayerId(state, userId) {
   return -1;
 }
 
+function getTerritoryId(state, territoryId) {
+  for (let i = 0; i < state.territories.length; i++) {
+    if (state.territories[i].id === territoryId + 1) {
+      return state.territories[i];
+    }
+  }
+  return null;
+}
 
-export function TerritoryWrapper({ index, value, id }) {
+
+export function  TerritoryWrapper({ index, id, props}) {
   const { state } = useContext(GameContext);
   const [territoryData, setTerritoryData] = useState(null);
+  const [territoryValue, setTerritoryValue] = useState(null);
+  const onButtonPress = props.onButtonPress;
+  const sharedInfo = props.sharedInfo;
+  const [troops, setTroops] = useState(0);
+
+  const buttonsInfo = sharedInfo?.button;
+
 
   useEffect(() => {
     if (state !== null) {
+      // console.log(state);
       const territories = state.territories;
-      const territoryData = territories[id];
+      // const territoryData = territories[id];
+      const territoryData = getTerritoryId(state, id);
       setTerritoryData(territoryData);
+      setTroops(territoryData.troops);
+
+      const _playerId = territoryData.player_id;
+      const _colorId = getPlayerId(state, _playerId);
+      if (_colorId === 1) {
+          setTerritoryValue('red');
+      } else if (_colorId === 2) {
+          setTerritoryValue('green');
+      } else if (_colorId === 3) {
+          setTerritoryValue('blue');
+      } else if (_colorId === 4) {
+          setTerritoryValue('cyan');
+      }
     }
   }, [state, id]);
 
   let className = 'territory';
-  let territoryId = 1;
+  let territoryId = null;
   const [active, setActive] = useState(false);
-
-  const handleClick = () => {
-    setActive(!active);
+  
+  
+  const handleButtonPress = (id) => {
+    if (buttonsInfo?.id && !buttonsInfo?.id2){
+      console.log("Apretando el segundo", id);
+      const id2 = id;
+      const buttonInfo = { 'button': {'id': buttonsInfo.id, 'id2': id2} };
+      setActive(!active);
+      onButtonPress(buttonInfo);
+    }
+    else {
+      console.log("me apretaron", id);
+      const buttonInfo = { 'button': {'id':id} };
+      setActive(!active);
+      onButtonPress(buttonInfo);
+    }
   };
 
   switch (index) {
@@ -56,128 +101,45 @@ export function TerritoryWrapper({ index, value, id }) {
       break;
   }
 
-  console.log(territoryData);
-  
-  let troops = 0;
-  if (territoryData) {
-    troops = territoryData.troops;
-  }
-
-  let territoryValue = 'white';
   // console.log(territoryData);
-  if (territoryData) {
-    const playerId = territoryData.player_id;
-    const colorId = getPlayerId(state, playerId);
-    if (colorId === 1) {
-      territoryValue = 'red';
-    } else if (colorId === 2) {
-      territoryValue = 'blue';
-    } else if (colorId === 3) {
-      territoryValue = 'green';
-    } else if (colorId === 4) {
-      territoryValue = 'cyan';
+
+  useEffect(() => {
+    // console.log("Me refrescaron");
+    if (sharedInfo !== null) {
+      // console.log("entra con: ", sharedInfo);
+      for (let i = 0; i < sharedInfo.length; i++) {
+        if (sharedInfo[i].id === territoryData?.id) {
+          // console.log("entra al if");
+          setTroops(sharedInfo[i].troops);
+          const _playerId = sharedInfo[i].player_id;
+          const _colorId = getPlayerId(state, _playerId);
+          console.log("player id: ", _playerId, _colorId);
+          if (_colorId === 1) {
+           setTerritoryValue('red');
+          } else if (_colorId === 2) {
+           setTerritoryValue('green');
+          } else if (_colorId === 3) {
+           setTerritoryValue('blue');
+          } else if (_colorId === 4) {
+           setTerritoryValue('cyan');
+          }
+              
+            }
+          }
     }
-  }
+  }, [sharedInfo]);
+
 
   return (
     <button
       value={territoryValue}
       id={id}
       className={`${className} ${active ? 'active' : ''}`}
-      onClick={handleClick}
+      onClick={() => handleButtonPress(id)}
     >
-      {/* {territoryValue} */}
-      id: {id}
-      <br />
       troops: {troops}
     </button>
-  );
+);
 }
-
-
-function Territory(props) {
-  let className = "territory";
-  let id = 1;
-  const [active, setActive] = useState(false);
-  let value = "white";
-
-  const handleClick = () => {
-    setActive(!active);
-  };
-
-	// const context = useContext(GameContext)
-
-// 	useEffect(() => {
-//   // Del territorio 0
-// 		useTerritoryData(20).then((data) => {
-// 			console.log(data);
-
-// 			const playerId = data['player_id'];
-
-// 			if (playerId == 1) {
-// 				// console.log("color rojo");
-// 				value = "red";
-// 			}
-// 			else if (playerId == 2) {
-// 				// console.log("color verde");
-// 				value = "green";
-// 			}
-// 			else if (playerId == 3) {
-// 				// console.log("color azul");
-// 				value = "blue";
-// 			}
-// 			else if (playerId == 4) {
-// 				// console.log("color cyan");
-// 				value = "cyan";
-// 			}
-// 			else {
-// 				// console.log("color blanco");
-// 				value = "white";
-// 			}
-// 		});
-// }, []);
-	
-	switch (props.index) {
-		case 0:
-			className += " territory1";
-			id = 0;
-			break;
-		case 1:
-			className += " territory2";
-			id = 2;
-			break;
-		case 2:
-			className += " territory3";
-			id = 3;
-			break;
-		case 3:
-			className += " territory4";
-			id = 4;
-			break;
-		default:
-			className += " territoryDefault";
-			id = 999;
-			break;
-	}
-	
-
-
-  console.log(props.value);
-
-
-  return (
-      <button
-				value={props.value}
-				id={props.id}
-				className={`${className} ${active ? "active" : ""}`}
-				onClick={handleClick}
-			>
-        {props.value}
-        {props.id}
-        {/* {id} */}
-      </button>
-  );
-}
-
 
 export default TerritoryWrapper;

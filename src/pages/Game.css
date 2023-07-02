@@ -1,10 +1,48 @@
 
+.page-contanier {
+  height: fit-content;
+  margin: 0;
+  padding: 0;
+}
+
 .page-contanier h1 {
   font-family: "Lobster", cursive;
   font-size: 60px;
+  margin: 0;
+  padding: 0;
 }
 
 .game-container {
     aspect-ratio: 10 / 3;
-    height: 100%;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+
   }
+
+.jugador {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.jugador1 {
+  background-color: var(--color-jugador-1);
+}
+.jugador2 {
+  background-color: var(--color-jugador-2);
+}
+.jugador3 {
+  background-color: var(--color-jugador-3);
+}
+.jugador4 {
+  background-color: var(--color-jugador-4);
+}
+
+.info-jugador  {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width : fit-content;
+  margin: 0 auto;
+
+}
