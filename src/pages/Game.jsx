@@ -76,6 +76,8 @@ function Game() {
 				sharedInfo={sharedInfo}
 				onTroopsChanged={handleTroopsChange} />
 
+      <div>Turno: {state?.game.turn} </div>
+
 			Tu usuario: {userID}
 
 			<div className="info-jugador">
