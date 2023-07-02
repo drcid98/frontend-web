@@ -75,9 +75,7 @@ export default function Rules() {
     <div className="Rules">
       <h1>Reglas</h1>
       <ImageSlider images={images} texts={texts} />
-      <h1> Instrucciones </h1>
-      <Board />
-      <Phase/>
+
     </div>
     
     </Layout>

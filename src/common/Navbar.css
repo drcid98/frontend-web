@@ -1,26 +1,31 @@
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed; /*Esto hace que el navbar no esté dentro del body*/
-    top: 0;
-    left: 0;
-    width: 100%;
-    max-width: 100%;
-    background-color: rgba(226, 226, 226, 0.781);
-    z-index: 9999;
-    border-radius: 0px;
-    border: 1px solid black;
-  }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  background-color: rgba(226, 226, 226, 0.781);
+  border-radius: 0px;
+  border: 1px solid black;
+  z-index: 9999;
+}  
   
-  
-nav ul {
+.navbar ul {
     list-style: none;
     display: flex;
+    justify-content: space-between;
+    list-style: none;
     margin-left: 0px;
     padding-left: 20px;
     margin-bottom: 5px;
+}
+
+.navbar .derecha {
+  margin-left: auto;
 }
 
 li {
@@ -40,8 +45,11 @@ a {
 }
 
 
+
+
+
 @media screen and (max-width: 600px) {
-    .a {
+    a {
       padding: 0;
     }
   }
